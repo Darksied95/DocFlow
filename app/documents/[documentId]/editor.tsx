@@ -10,9 +10,26 @@ import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Image from '@tiptap/extension-image'
 import ImageResize from 'tiptap-extension-resize-image'
+import { useEditorStore } from '@/store/use-editor-store';
+import { type Editor as EditorType } from "@tiptap/core";
 
 export const Editor = () => {
+  const { setEditor } = useEditorStore()
+
+  function handleEditorChange({ editor }: { editor: EditorType }) {
+    setEditor(editor)
+  }
   const editor = useEditor({
+    onCreate: handleEditorChange,
+    onDestroy() {
+      setEditor(null)
+    },
+    onUpdate: handleEditorChange,
+    onSelectionUpdate: handleEditorChange,
+    onTransaction: handleEditorChange,
+    onFocus: handleEditorChange,
+    onBlur: handleEditorChange,
+    onContentError: handleEditorChange,
     editorProps: {
       attributes: {
         style: "padding-left: 56px; padding-right: 56px;",
