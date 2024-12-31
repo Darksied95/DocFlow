@@ -12,6 +12,7 @@ import Image from '@tiptap/extension-image'
 import ImageResize from 'tiptap-extension-resize-image'
 import { useEditorStore } from '@/store/use-editor-store';
 import { type Editor as EditorType } from "@tiptap/core";
+import Underline from '@tiptap/extension-underline'
 
 export const Editor = () => {
   const { setEditor } = useEditorStore()
@@ -45,7 +46,9 @@ export const Editor = () => {
       Image,
       ImageResize,
       TaskItem.configure({ nested: true }),
-      TaskList],
+      TaskList,
+      Underline
+    ],
     content: `
         <table>
           <tbody>
