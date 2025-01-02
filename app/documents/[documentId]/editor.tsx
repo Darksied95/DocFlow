@@ -6,6 +6,7 @@ import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import Table from '@tiptap/extension-table'
 import TableCell from '@tiptap/extension-table-cell'
+import TextStyle from '@tiptap/extension-text-style'
 import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Image from '@tiptap/extension-image'
@@ -13,6 +14,7 @@ import ImageResize from 'tiptap-extension-resize-image'
 import { useEditorStore } from '@/store/use-editor-store';
 import { type Editor as EditorType } from "@tiptap/core";
 import Underline from '@tiptap/extension-underline'
+import FontFamily from '@tiptap/extension-font-family'
 
 export const Editor = () => {
   const { setEditor } = useEditorStore()
@@ -47,8 +49,11 @@ export const Editor = () => {
       ImageResize,
       TaskItem.configure({ nested: true }),
       TaskList,
-      Underline
+      Underline,
+      FontFamily,
+      TextStyle,
     ],
+
     content: `
         <table>
           <tbody>
